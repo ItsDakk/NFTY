@@ -1,0 +1,1 @@
+Any file that is component file needs to start with capitalization 
