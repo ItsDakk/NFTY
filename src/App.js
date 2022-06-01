@@ -15,6 +15,11 @@ import LoginForm from './forms/LoginForm';
 import CategoryForm from './forms/CategoryForm';
 import ItemForm from './forms/ItemForm';
 import apiCategory from './api/apiCategory';
+import CategoryBar from './components/CategoryBar';
+import AdminMenu from './components/AdminMenu';
+import AdminSelectCategory from './components/AdminSelectCategory';
+import AdminSelectItem from './components/AdminSelectItem';
+import ItemBrowser from './components/ItemBrowser';
 
 const handleAPITest = async ()=>{
   const source = CancelToken.source();
@@ -31,9 +36,8 @@ function App() {
 
   return ( 
       <NavBar>
-        <Button color="success" onClick={ handleAPITest }>Test API Call</Button>
-        <Error style={{ backgroundColor:'cornflowerblue' }}>This is an error Message</Error> 
-        <LoginForm/>
+        <ItemBrowser/>
+        <AdminMenu/>
       </NavBar>
   );
 }

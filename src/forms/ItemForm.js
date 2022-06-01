@@ -18,17 +18,8 @@ const FormSchema = Yup.object(
     }
 )
 
-export default function ItemForm({ 
-    item = {
-        id:1, 
-        name: "item1", 
-        description: "my test item", 
-        category_id:3,
-        price: 9.99, 
-        image: 'my-image.png'
-        }
-    })
-{
+export default function ItemForm({ item })
+    {
     const initialValues = {
         name: item?.name ?? '',
         desc: item?.desc ?? '',
@@ -122,10 +113,10 @@ export default function ItemForm({
                     error = { formik.touched.category_id && Boolean(formik.errors.category_id) }
                     >
                     <MenuItem value = {0}><em>None</em></MenuItem>
-                // When we are in React and we want to do something for everything in a list, USE MAP!!
-                {categories.map((category)=>(
-                    // When ever you map using a list inside of React you have to use keys.
-                    // A key is a variable that is unique to this item that you're looping over
+                        // When we are in React and we want to do something for everything in a list, USE MAP!!
+                        {categories.map((category)=>(
+                        // When ever you map using a list inside of React you have to use keys.
+                        // A key is a variable that is unique to this item that you're looping over
                     <MenuItem key = {category.id} value={category.id}>{category.name} | {category.id}</MenuItem>
                 )
                 )}
