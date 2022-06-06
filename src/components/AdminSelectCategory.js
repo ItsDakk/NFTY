@@ -5,13 +5,15 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import CategoryForm from '../forms/CategoryForm';
-
-const categories = [{id: 1, name:"Shoes"},{id: 2, name:"Pants"},{id: 3, name:"Shirts"}]
+import useCategories from '../hooks/useCategories';
+import Error from '../components/Error';
 
 export default function AdminSelectCategory() {
 
     // Since we are changing to objects to a string, we are setting the useState value to an empty string
     const [category, setCategory] = useState('')
+
+    const {categories, error} =  useCategories();
 
     const handleChange = (event) => {
         console.log(event.target.value)
@@ -37,7 +39,7 @@ export default function AdminSelectCategory() {
                         onChange={(event) => handleChange(event)} >
 
                     <MenuItem value="default"><em>Select Category to Edit</em></MenuItem>
-                    {categories.map(
+                    {categories?.map(
                         // Whatever is inside of the map function is where we need to assign a key prompt
                         // * Assign it to the outer most element!!
                         (category) => (
@@ -46,6 +48,7 @@ export default function AdminSelectCategory() {
                         
                     )}
                     </Select>
+                <Error>{error}</Error>
 
             </FormControl>
 

@@ -1,4 +1,3 @@
-// Have to import create themes from MUI
 import { createTheme } from "@mui/material/styles";
 
 export const themeOptions = {
@@ -26,7 +25,6 @@ export const themeOptions = {
     overrides: {
       MuiAppBar: {
         colorInherit: {
-          
           color: '#fff',
         },
       },
@@ -43,6 +41,5 @@ export const themeOptions = {
     },
   };
 
-  // Now we have to export the theme as themeOptions to apply that theme 
-  const theme=createTheme(themeOptions);
+  const theme = createTheme(themeOptions);
   export default theme

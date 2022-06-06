@@ -2,6 +2,9 @@ import React from 'react';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
+import Error from './Error';
+import Box from '@mui/system/Box';
+import { CircularProgress } from '@mui/material';
 
 /* 
 * useState:
@@ -9,7 +12,7 @@ import { useState } from 'react';
     State is what regulates components that get reran, anytime you change the state, the component that uses that state will rerun
 */
 
-const categories = [{id: 1, name:"Shoes"},{id: 2, name:"Pants"},{id: 3, name:"Shirts"}]
+// const categories = [{id: 1, name:"Shoes"},{id: 2, name:"Pants"},{id: 3, name:"Shirts"}]
 
 export default function CategoryBar({handleClick=() =>{}}) {
 
@@ -33,6 +36,23 @@ export default function CategoryBar({handleClick=() =>{}}) {
             setActiveCategory(category)
         }
     }
+    
+    if (!categories) {
+      return (
+        <Box sx={{display: "flex"}}>
+          <CircularProgress/>
+        </Box>
+      )
+    }
+
+    if (error) {
+      return (
+        <Box sx={{display: "flex"}}>
+          <Error>{error}</Error>
+        </Box>
+      )
+    }
+
 
   return (
     // Have to use map function for every item in list!

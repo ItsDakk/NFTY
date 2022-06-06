@@ -6,7 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import MenuItem from '@mui/material.MenuItem';
+import MenuItem from '@mui/material/MenuItem';
 
 const range = (x) => [...Array(x).keys()]
 /* 
