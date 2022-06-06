@@ -4,7 +4,7 @@
     Index.js -> CartItem.js -> CartCard.js -> AddRemoveCartItem.js being the lowest level componenet
 */
 
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -25,13 +25,15 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function CartItem({item}) {
   // Taking in item which comes from the Index.js file (line 18 & 19)
   //* const [qty, setQty] -> This is a useState function
-  const [qty, setQty] = useState(cart.filter((cartItem) => cartItem.id === item.id).length())
+  const [qty, setQty] = useState(cart.filter((cartItem) => cartItem.id === item.id).length)
   /* 
     * Setting the state in this file because we can only pass data down. Since ChangeCartItem is the lower than this level, 
     * we need to use the setState above that level, so we can pass that data down to ChangeCartItem
     
     This useState is going to give us back an array of items in our cart. We use the .length() method to determine how many
     items are in the cart.
+    
+    We have to pass in setQty because React is going to handle the state change for us, since this is what was used to change the quantity
 
   */
 
@@ -49,11 +51,11 @@ export default function CartItem({item}) {
               <CartCard item={item}/>
             </Item>
         </Grid>
-
         <Grid item xs={12} sm={6} md={2}>
+          
           <Item sx={{height:"100%"}}>
-            // We have to pass in setQty because React is going to handle the state change for us, since this is what was used to change the quantity
-            <ChangeCartItemQuantity qty={qty} item={item} setQty={setQty} />
+            
+            <ChangeCartItemQuantity qty={qty} item={item} setQty={setQty} /> 
           </Item>
         </Grid>
 
@@ -96,4 +98,4 @@ const item3 = {
     "category_id": 1
 }
 
-const items = [item1, item2, item2, item3, item3]
+const cart = [item1, item2, item2, item3, item3]

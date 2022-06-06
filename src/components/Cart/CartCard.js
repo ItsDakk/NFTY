@@ -30,10 +30,10 @@ export default function CartCard({item}) {
 
       </CardContent>
       <CardActions>
-        // Passing through the cart item as item so we can access the item
         <AddRemoveCartItem item={item} />
       </CardActions>
     </Card>
   );
+  // Passing through the cart item as item so we can access the item
 }
 

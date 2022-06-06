@@ -11,7 +11,7 @@ import NavBar from './components/NavBar';
 // *This also means we have to keep the same name
 // import { getUser } from './api/apiBasicAuth';
 import { CancelToken } from 'apisauce';
-// import LoginForm from './forms/LoginForm';
+import LoginForm from './forms/LoginForm';
 // import CategoryForm from './forms/CategoryForm';
 // import ItemForm from './forms/ItemForm';
 import apiCategory from './api/apiCategory';
@@ -20,7 +20,9 @@ import AdminMenu from './components/AdminMenu';
 // import AdminSelectCategory from './components/AdminSelectCategory';
 // import AdminSelectItem from './components/AdminSelectItem';
 // import ItemBrowser from './components/ItemBrowser';
-import Cart from './components/Cart/Index'
+import Cart from './components/Cart/Index';
+
+
 
 const handleAPITest = async ()=>{
   const source = CancelToken.source();
@@ -37,7 +39,7 @@ function App() {
 
   return ( 
       <NavBar>
-        <Cart/>
+        <LoginForm/>
         <AdminMenu/>
       </NavBar>
   );
