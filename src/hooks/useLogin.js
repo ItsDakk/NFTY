@@ -30,4 +30,4 @@ export default function useLogin(loginCreds, setLoginCreds, setError, setUser) {
         // We have to subscribe to all of the parameters
         [loginCreds, setLoginCreds, setError, setUser]
     )
-}
+};

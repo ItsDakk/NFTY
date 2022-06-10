@@ -1,8 +1,8 @@
-import React, {useContext, useState, useEffect, useInsertionEffect} from 'react';
-import * as Yup from "yup";
-import { useFormik } from 'formik';
-import Button from '../components/Button';
 import TextField from '@mui/material/TextField';
+import { useFormik } from 'formik';
+import React, { useContext, useState } from 'react';
+import * as Yup from "yup";
+import Button from '../components/Button';
 import { AppContext } from '../context/AppContext';
 import useLogin from '../hooks/useLogin';
 
@@ -23,18 +23,18 @@ const initialValues = {
 
 export default function LoginForm(){
     
-    // Order does matter here. Have to import them in the order that we exported them
-    useLogin(loginCreds, setLoginCreds, setError, setUser)
-    
     // This is retrieving our setUser function so we can set the user
     const {setUser} = useContext(AppContext)
-    
+
     // This is what we are going to be watching for changes in. When the loginCred changes, then we are going to go out to our API
     // check to make sure that they logged in properly and get the user info back
     const [loginCreds, setLoginCreds] = useState({});
-    
+
     // This is just to deal with our errors
     const [error, setError] = useState('')
+    
+    // Order does matter here. Have to import them in the order that we exported them
+    useLogin(loginCreds, setLoginCreds, setError, setUser)
     
     const handleSubmit = (values) => {
         console.log(values)

@@ -7,7 +7,7 @@ const getItems = async (cancelToken) => {
     let error;
     let items;
 
-    const response = await apiClientTokenAuth(cancelToken).get(endpoint)
+    const response = await apiClientNoAuth(cancelToken).get(endpoint);
     if (response.ok) {
         items = response.data.items
     } else {
@@ -19,10 +19,13 @@ const getItems = async (cancelToken) => {
     }
 }
 
-const getByCategory = async (categoryID, cancelToken) => {
-    const response = await apiClientTokenAuth(cancelToken).get(endpoint+ '/category/' + categoryID)
+const getByCategory = async (id, cancelToken) => {
+    let error;
+    let items; 
+
+    const response = await apiClientTokenAuth(cancelToken).get(endpoint+ '/category/' + id);
     if (response.ok) {
-        items = response.data.item
+        items = response.data.items
     } else {
         error = "An unexpected error has occured. Please try again later"
     }
@@ -34,17 +37,17 @@ const getByCategory = async (categoryID, cancelToken) => {
 };
 
 const postItem = async (data, token, cancelToken) => {
-    const response = await apiClientTokenAuth(token, cancelToken).post(endpoint)
+    const response = await apiClientTokenAuth(token, cancelToken).post(endpoint, data)
     return response.ok
 };
 
-const putItem = async (categoryID, data, token, cancelToken) => {
-    const response = await apiClientTokenAuth(token, cancelToken).put(endpoint+'/'+categoryID, data)
+const putItem = async (id, data, token, cancelToken) => {
+    const response = await apiClientTokenAuth(token, cancelToken).put(endpoint+'/'+id, data)
     return response.ok
 };
 
-const delItem = async (categoryID, token, cancelToken) => {
-    const response = await apiClientTokenAuth(token, cancelToken).delete(endpoint+'/'+categoryID)
+const delItem = async (id, token, cancelToken) => {
+    const response = await apiClientTokenAuth(token, cancelToken).delete(endpoint+'/'+id)
     return response.ok
 };
 
