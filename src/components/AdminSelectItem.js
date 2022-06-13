@@ -5,41 +5,16 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import ItemForm from '../forms/ItemForm';
-
-
-const item1 = {
-    "id": 1,
-    "name": "ItemA",
-    "desc": "ItemA is good",
-    "price": 12.99,
-    "img": "https://res.cloudinary.com/cae67/image/upload/v1651792721/kanye_jvbkns.png",
-    "category_id": 1
-}
-
-const item2 = {
-    "id": 2,
-    "name": "ItemB",
-    "desc": "ItemB is good",
-    "price": 19.99,
-    "img": "https://res.cloudinary.com/cae67/image/upload/v1652745758/kyle1_plkclv.png",
-    "category_id": 2
-}
-
-const item3 = {
-    "id": 3,
-    "name": "ItemC",
-    "desc": "ItemC is good",
-    "price": 29.99,
-    "img": "https://res.cloudinary.com/cae67/image/upload/v1652982371/cow_gkvuce.jpg",
-    "category_id": 1
-}
-
-const items = [item1, item2, item3]
+import useItems from '../hooks/useItems';
 
 export default function AdminSelectItem() {
 
     // Since we are changing to objects to a string, we are setting the useState value to an empty string
     const [item, setItem] = useState('')
+
+    // Pulling in items from hooks, which pulls from the apiItems
+    // Also pulling error, just in case there is an error pulling the items, then the user would be able to see this
+    const {items, error} = useItems()
 
     const handleChange = (event) => {
         console.log(event.target.value)
@@ -65,7 +40,7 @@ export default function AdminSelectItem() {
                         onChange={(event) => handleChange(event)}>
 
                     <MenuItem value="default"><em>Select Item to Edit</em></MenuItem>
-                    {items.map(
+                    {items?.map(
                         // Whatever is inside of the map function is where we need to assign a key prompt
                         // * Assign it to the outer most element!!
                         (item) => (
@@ -74,7 +49,7 @@ export default function AdminSelectItem() {
                         
                     )}
                     </Select>
-
+                <Error>{ error }</Error>
             </FormControl>
 
             {item ?

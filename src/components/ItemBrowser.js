@@ -76,29 +76,29 @@ export default function ItemBrowser(category_id) {
     </ImageList>
   );
 }
-const item1={
-  "id":1,
-  "name":"Itema",
-  "desc":"Itema is good",
-  "price":2.99,
-  "img":"https://res.cloudinary.com/cae67/image/upload/v1651792721/kanye_jvbkns.png",
-  "category_id":1
-}
-const item2={
-  "id":2,
-  "name":"ItemB",
-  "desc":"ItemB is good",
-  "price":12.99,
-  "img":"https://res.cloudinary.com/cae67/image/upload/v1652745758/kyle1_plkclv.png",
-  "category_id":2
-}
-const item3={
-  "id":3,
-  "name":"ItemC",
-  "desc":"ItemC is good",
-  "price":200.00,
-  "img":"https://res.cloudinary.com/cae67/image/upload/v1652982371/cow_gkvuce.jpg",
-  "category_id":1
-}
+// const item1={
+//   "id":1,
+//   "name":"Itema",
+//   "desc":"Itema is good",
+//   "price":2.99,
+//   "img":"https://res.cloudinary.com/cae67/image/upload/v1651792721/kanye_jvbkns.png",
+//   "category_id":1
+// }
+// const item2={
+//   "id":2,
+//   "name":"ItemB",
+//   "desc":"ItemB is good",
+//   "price":12.99,
+//   "img":"https://res.cloudinary.com/cae67/image/upload/v1652745758/kyle1_plkclv.png",
+//   "category_id":2
+// }
+// const item3={
+//   "id":3,
+//   "name":"ItemC",
+//   "desc":"ItemC is good",
+//   "price":200.00,
+//   "img":"https://res.cloudinary.com/cae67/image/upload/v1652982371/cow_gkvuce.jpg",
+//   "category_id":1
+// }
 
-const items=[item1, item2, item3]
+// const items=[item1, item2, item3]

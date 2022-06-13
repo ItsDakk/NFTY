@@ -21,6 +21,7 @@ import AdminMenu from './components/AdminMenu';
 // import AdminSelectItem from './components/AdminSelectItem';
 // import ItemBrowser from './components/ItemBrowser';
 import Cart from './components/Cart/Index';
+import SnackBar from './components/SnackBar';
 
 
 
@@ -38,10 +39,13 @@ function App() {
   */
 
   return ( 
+    <>
       <NavBar>
+        <SnackBar/>
         <LoginForm/>
         <AdminMenu/>
       </NavBar>
+    </>
   );
 }
 
