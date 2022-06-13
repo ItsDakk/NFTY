@@ -1,0 +1,16 @@
+npm install formik --save
+npm install yup --save
+
+Any file that is component file needs to start with capitalization 
+
+useEffect: Used for whenever we want execute something when the page loads or when something else changes, we useEffect. 
+            When I move, you move. 
+
+useState: If you want to see the changes of something, you have to store it in useState. You don't have to keep it on a refresh timer, it checks for you 
+
+useContext: If you want to use something in one of your components you have store it in useContext, if you don't want to have to worry about passing the 
+            variable through a whole bunch of variables, useContext
+
+useReducer: When you have the state has a multiple things that you may want to do to it, e.g if your state is more than just a name, or dictionary
+            If your state needs to do things, then useReducer. this is not a React component this is just a function.
+

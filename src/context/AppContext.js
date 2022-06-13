@@ -1,5 +1,6 @@
-import {createContext, useState} from 'react';
-
+import { createContext, useEffect, useReducer, useState } from "react";
+// Since our reducers are named exports, we have to pull them out with braces
+import { cartActions, shopReducer } from "../reducers/shopReducer";
 
 export const AppContext = createContext();
 
@@ -26,19 +27,38 @@ const AppContextProvider = ({children}) => {
         _setUser(user)
     };
 
+  const values = {
+    alert,
+    setAlert,
 
-    const values = {
-        alert, 
-        setAlert,
-        user,
-        setUser
-    };
+    user,
+    setUser,
 
-    return (
-        <AppContext.Provider value={values}>
-            {children}
-        </AppContext.Provider>
-    );
+    cart,
+    addToCart: (item) => {
+      dispatch({ type: cartActions.addToCart, item });
+    },
+
+    addBulkToCart: (item) => {
+      dispatch({ type: cartActions.addBulkToCart, item });
+    },
+
+    removeFromCart: (item) => {
+      dispatch({ type: cartActions.removeFromCart, item });
+    },
+
+    removeAllFromCart: (item) => {
+      dispatch({ type: cartActions.removeAllFromCart, item });
+    },
+    emptyCart: () => {
+        // Don't need to pass in the item here because we don't need. We are just returning and empty cart
+      dispatch({ type: cartActions.emptyCart });
+    },
+  };
+
+  return(
+  <AppContext.Provider value={values}>{children}</AppContext.Provider>
+  )
 };
 
-export default AppContextProvider
+export default AppContextProvider;
