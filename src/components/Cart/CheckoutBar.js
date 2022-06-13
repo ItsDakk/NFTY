@@ -1,10 +1,14 @@
-import React from 'react'
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import React from 'react';
+import { AppContext } from '../../context/AppContext';
 import Button from '../Button';
 
 export default function CheckoutBar() {
+
+    const { user, cart } = useContext(AppContext)
+
     /*
         We use to reduce function so that we can get 1 price back for our cart total        
     */
@@ -19,32 +23,3 @@ export default function CheckoutBar() {
     </Box>
   )
 }
-
-const item1 = {
-    "id": 1,
-    "name": "ItemA",
-    "desc": "ItemA is good",
-    "price": 12.99,
-    "img": "https://res.cloudinary.com/cae67/image/upload/v1651792721/kanye_jvbkns.png",
-    "category_id": 1
-}
-
-const item2 = {
-    "id": 2,
-    "name": "ItemB",
-    "desc": "ItemB is good",
-    "price": 19.99,
-    "img": "https://res.cloudinary.com/cae67/image/upload/v1652745758/kyle1_plkclv.png",
-    "category_id": 2
-}
-
-const item3 = {
-    "id": 3,
-    "name": "ItemC",
-    "desc": "ItemC is good",
-    "price": 29.99,
-    "img": "https://res.cloudinary.com/cae67/image/upload/v1652982371/cow_gkvuce.jpg",
-    "category_id": 1
-}
-
-const cart=[item1, item2, item2, item2, item3, item3]

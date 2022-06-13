@@ -9,10 +9,19 @@ import useItems from '../hooks/useItems';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/system/Box';
 import Error from './Error';
+import { AppContext } from '../context/AppContext';
 
 export default function ItemBrowser(category_id) {
 
   const {error, items} = useItems(category_id)
+
+  // Bringing in addToCart function from the AppContext file
+  const { addToCart, setAlert } = useContext(AppContext)
+
+  handleAddToCart = (item) => {
+    addToCart(item)
+    setAlert(`You have added ${item.name} to your cart`)
+  }
 
   if (!items) {
     return (
@@ -28,7 +37,7 @@ export default function ItemBrowser(category_id) {
         <Error>{error}</Error>
       </Box>
     )
-  }
+  };
 
   return (
     <ImageList cols={3}>
@@ -55,6 +64,8 @@ export default function ItemBrowser(category_id) {
               <IconButton
               sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
               aria-label={`info about ${item.title}`}
+              // The item here is the item that the user is currently on
+              onClick={()=> {handleAddToCart(item)}}
             >
               <AddShoppingCartTwoToneIcon />
             </IconButton>

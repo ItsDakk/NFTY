@@ -4,13 +4,14 @@
     Index.js -> CartItem.js -> CartCard.js -> AddRemoveCartItem.js being the lowest level componenet
 */
 
-import React, { useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import CartCard from './CartCard';
-import ChangeCartItemQuantity from './ChangeCartItemQuantity';
+import ChangeCartItemQuanitity from './ChangeCartItemQuanitity';
+import { AppContext } from '../../context/AppContext';
 
 // This is just giving us some styling for the items in the cart
 
@@ -23,6 +24,17 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 export default function CartItem({item}) {
+
+  // useEffect is when we want to do something when something else happens 
+  useEffect(
+    () => {
+      // Any time we make a change to our cart, we will recount the cart and reset our qty and will update the page
+      setQty(cart.filter((cartItem) => cartItem.id === item.id).length)
+    },
+    // Dependency Array (where we want to watch for changes)
+    [cart, item]
+  )
+
   // Taking in item which comes from the Index.js file (line 18 & 19)
   //* const [qty, setQty] -> This is a useState function
   const [qty, setQty] = useState(cart.filter((cartItem) => cartItem.id === item.id).length)
@@ -69,33 +81,5 @@ export default function CartItem({item}) {
 
       </Grid>
   );
-}
+}; 
 
-const item1 = {
-    "id": 1,
-    "name": "ItemA",
-    "desc": "ItemA is good",
-    "price": 12.99,
-    "img": "https://res.cloudinary.com/cae67/image/upload/v1651792721/kanye_jvbkns.png",
-    "category_id": 1
-}
-
-const item2 = {
-    "id": 2,
-    "name": "ItemB",
-    "desc": "ItemB is good",
-    "price": 19.99,
-    "img": "https://res.cloudinary.com/cae67/image/upload/v1652745758/kyle1_plkclv.png",
-    "category_id": 2
-}
-
-const item3 = {
-    "id": 3,
-    "name": "ItemC",
-    "desc": "ItemC is good",
-    "price": 29.99,
-    "img": "https://res.cloudinary.com/cae67/image/upload/v1652982371/cow_gkvuce.jpg",
-    "category_id": 1
-}
-
-const cart = [item1, item2, item2, item3, item3]

@@ -7,6 +7,7 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import { AppContext } from '../../context/AppContext';
 
 const range = (x) => [...Array(x).keys()]
 /* 
@@ -16,14 +17,15 @@ const range = (x) => [...Array(x).keys()]
     .keys() will give us a count of everything that is in the array
 */
 
-export default function ChangeCartItemQuantity({item, qty, setQty}) {
+export default function ChangeCartItemQuantity({item, qty}) {
     const theme = useTheme();
+    const { removeAllFromCart, addBulkToCart} = useContext(AppContext)
 
     const handleChange = (event, item) => {
-        // Here we are setting the qty to the setQty state that we created
-        setQty(event.target.value)
-        console.log('Changing cart either adding or removing')
-    }
+        removeAllFromCart(item)
+        addBulkToCart(Array(event.target.value).fill(item))
+        
+    };
 
             // theme.palette.background.default will give us our default background color
   return (
@@ -57,4 +59,4 @@ export default function ChangeCartItemQuantity({item, qty, setQty}) {
             </Select>
     </FormControl>
   )
-}
+};
